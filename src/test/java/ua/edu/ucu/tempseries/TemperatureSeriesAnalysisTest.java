@@ -31,7 +31,6 @@ public class TemperatureSeriesAnalysisTest {
         seriesAnalysis.average();
     }
 
-//    @Ignore
     @Test
     public void testAverage() {
         double[] temperatureSeries = {3.0, -5.0, 1.0, 5.0};
@@ -41,6 +40,12 @@ public class TemperatureSeriesAnalysisTest {
         double actualResult = seriesAnalysis.average();
         
         assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDevitaionWithEmptyArray() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
+        seriesAnalysis.devitation();
     }
 
     @Test
@@ -293,6 +298,12 @@ public class TemperatureSeriesAnalysisTest {
     public void testTemperatureSeriesAnalysisEmpty() {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();
         seriesAnalysis.max();
+    }
+
+    @Test(expected = InputMismatchException.class)
+    public void testTemperatureSeriesAnalysisLowerTheLowest() {
+        double[] temperatureSeries = {1.0, -280.0};
+        new TemperatureSeriesAnalysis(temperatureSeries);
     }
 
     @Test
