@@ -1,6 +1,5 @@
 package ua.edu.ucu.tempseries;
 
-import jdk.javadoc.internal.doclets.toolkit.util.DocFinder;
 
 import java.util.InputMismatchException;
 
