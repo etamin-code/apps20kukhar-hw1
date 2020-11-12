@@ -6,10 +6,6 @@ public class TempSummaryStatistics {
     public double minTemp;
     public double maxTemp;
 
-    public TempSummaryStatistics() {
-
-    }
-
     public TempSummaryStatistics(double avgTemp, double devTemp,
                                  double minTemp, double maxTemp) {
         this.avgTemp = avgTemp;
