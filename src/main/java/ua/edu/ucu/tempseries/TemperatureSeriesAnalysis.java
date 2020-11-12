@@ -5,20 +5,20 @@ import java.util.Arrays;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysis {
-    static final double LowestTemp = -273.0;
+    static final double lowestTemp = -273.0;
     private double[] temperatureList;
     private int numOfElements;
     private Object IllegalArgumentException;
 
     public TemperatureSeriesAnalysis() {
-        int DefaultSize = 4;
-        temperatureList = new double[DefaultSize];
+        int defaultSize = 4;
+        temperatureList = new double[defaultSize];
         numOfElements = 0;
     }
 
     public TemperatureSeriesAnalysis(double[] temperatureSeries) {
         for (double el: temperatureSeries) {
-            if (el < LowestTemp) {
+            if (el < lowestTemp) {
                 throw new InputMismatchException();
             }
         }
@@ -102,7 +102,7 @@ public class TemperatureSeriesAnalysis {
         }
         double[] tempLessList = new double[numOfElements];
         int size = 0;
-        for (double el: temperatureList){
+        for (double el: temperatureList) {
             if (el < tempValue) {
                 tempLessList[size] = el;
                 size += 1;
@@ -128,7 +128,7 @@ public class TemperatureSeriesAnalysis {
 
     TempSummaryStatistics summaryStatistics() {
         if (this.numOfElements == 0) {
-            return (TempSummaryStatistics) IllegalArgumentException;
+            throw new IllegalArgumentException();
         }
         TempSummaryStatistics statistic = new TempSummaryStatistics(average(),
                                                devitation(), min(), max());
@@ -139,18 +139,18 @@ public class TemperatureSeriesAnalysis {
     
     public int addTemps(double[] temps) {
         for (double el: temps) {
-            if (el < LowestTemp) {
+            if (el < lowestTemp) {
                 throw new InputMismatchException();
             }
         }
         while (temperatureList.length - numOfElements < temps.length) {
-            double[] newTemperatureList = new double[2 * temperatureList.length];
-            System.arraycopy(temperatureList, 0, newTemperatureList,
+            double[] newTemperature = new double[2 * temperatureList.length];
+            System.arraycopy(temperatureList, 0, newTemperature,
                       0, numOfElements);
-            temperatureList = newTemperatureList;
+            temperatureList = newTemperature;
 
         }
-        for (double el: temps){
+        for (double el: temps) {
             temperatureList[numOfElements] = el;
             numOfElements += 1;
         }
